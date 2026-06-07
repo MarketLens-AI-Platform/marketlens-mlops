@@ -1,0 +1,10 @@
+pandas
+numpy
+scikit-learn
+xgboost
+mlxtend
+kfp==2.5.0
+joblib
+python-dotenv
+minio
+boto3

@@ -1,0 +1,25 @@
+name: Compile Kubeflow Pipeline
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+
+jobs:
+  compile-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          
+      - name: Install dependencies
+        run: |
+          pip install kfp==2.5.0 pandas numpy scikit-learn xgboost joblib
+          
+      - name: Compile Pipeline
+        run: |
+          export PYTHONPATH=$PYTHONPATH:.
+          python pipelines/main_pipeline.py
