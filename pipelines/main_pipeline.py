@@ -21,7 +21,7 @@ from pipelines.kfp_components import (  # noqa: E402
 
 @dsl.pipeline(name="ecommerce-intelligence-pipeline")
 def ecommerce_intelligence_pipeline(
-    enriched_products_uri: str = "minio://mlpipeline/enriched_products.json",
+    enriched_products_uri: str = "s3://marketlens-raw-ingestion-v110/enriched_products.json",
 ) -> None:
     """Run preprocessing, parallel training, and top-k scoring."""
     enriched_input = dsl.importer(
