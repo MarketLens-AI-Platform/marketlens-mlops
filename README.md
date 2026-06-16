@@ -6,7 +6,7 @@
 ![Kubeflow](https://img.shields.io/badge/Kubeflow-v2.5.0-orange.svg)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-Ready-blue.svg)
 
-Kubeflow ML pipeline with XGBoost classification, K-Means + PCA unsupervised learning, Apriori association rule mining, and a composite Top-K scoring engine. Fully decoupled cloud-native architecture using MinIO for artifact passing.
+Kubeflow ML pipeline with XGBoost classification, K-Means + PCA unsupervised learning, Apriori association rule mining, and a composite Top-K scoring engine. Fully decoupled cloud-native architecture using AWS S3 for artifact passing.
 
 ## Pipeline DAG
 
@@ -46,10 +46,9 @@ This generates `pipeline.yaml` which can be uploaded to the Kubeflow UI.
 
 ## Environment Variables
 
-- `MINIO_ACCESS_KEY`: Access key for MinIO storage
-- `MINIO_SECRET_KEY`: Secret key for MinIO storage
-- `MINIO_ENDPOINT`: MinIO server endpoint (S3 compatible)
-- `MINIO_BUCKET`: Target bucket for data artifacts
+- `S3_BUCKET`: Target S3 bucket for data artifacts (default: `marketlens-raw-ingestion-v110`)
+- `AWS_DEFAULT_REGION`: AWS region for S3 access (default: `us-east-1`)
+- `DEEPSEEK_API_KEY`: API key for LLM-based enrichment tasks
 
 ## Docker Usage
 
